@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Today's Attendence Report</title>
+    <style>
+      
+      table {
+        margin: 10%;
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 60%;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+</head>
+<body>
+    <center>
+    <table>
+        <tr>
+          <th style="width: 10%">S.No</th>
+          <th>Name</th>
+          <th>
+            <script>
+              var today = new Date();
+              var dd = String(today.getDate()).padStart(2, '0');
+              var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+              var yyyy = today.getFullYear();
+              today = dd + '/' + mm + '/' + yyyy;
+              document.write(today);
+            </script>
+          </th>
+        </tr>
+        <tr id='dload'><td></td><td></td><td></td></tr>
+      </table>
+    </center>
+  <script>
+
+    let name_json;
+    let report_json;
+
+    document.addEventListener('readystatechange', event => {
+
+      if (event.target.readyState === "complete") {
+        fetch('names.json')
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(json) {
+            update_name(json);
+          });
+
+        fetch('report.json')
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(json) {
+            update_report(json);
+          });
+          
+      }
+
+    });
+
+    function update_name(data){
+      const dload = "<tr id='dload'><td></td><td></td><td id='rload'></td></tr>";
+      const dload1 = "<tr><td>";
+      const dload2 = "</td><td>";
+      const dload3 = "</td><td id = '";
+      const dload4 =  "'></td></tr>";
+      name_json = JSON.parse(data);
+      for (i in name_json){
+          let skeleton = dload1 +(Number(i)+1) + dload2 + name_json[i].toUpperCase() + dload3 + i + dload4 + dload;
+          document.getElementById('dload').outerHTML = skeleton;
+      }
+      
+    }
+
+    function update_report(data){
+      const rload1 = 
+      report_json = JSON.parse(data);
+      for(i in report_json){
+        document.getElementById(i).innerHTML = report_json[i];
+      }
+      document.getElementById('dload').outerHTML = '';
+    }
+    
+  </script>
+</body>
+</html>
