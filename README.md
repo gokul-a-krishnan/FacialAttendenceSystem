@@ -1,5 +1,5 @@
 # FacialAttendenceSystem
- ##Attendence System Demo Application
+ ## Attendence System Demo Application
  ---
  ### Create Directories
  * config
