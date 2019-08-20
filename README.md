@@ -6,3 +6,5 @@
    * models
    ### or Specify the path in 
    Api Path (https://github.com/gokul-a-krishnan/FacialAttendenceSystem/blob/master/FaceRecognizer/api_path.py)
+   ### Install Packages
+     ##### _pip install opencv-contrib-python_
