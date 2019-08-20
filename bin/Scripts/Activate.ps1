@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\gokul\PycharmProjects\FacialAttendenceSystemPrototype\bin"
+$env:VIRTUAL_ENV="D:\GitHub\FacialAttendenceSystem\bin"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

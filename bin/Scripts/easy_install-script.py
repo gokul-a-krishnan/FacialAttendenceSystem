@@ -1,4 +1,4 @@
-#!C:\Users\gokul\PycharmProjects\FacialAttendenceSystemPrototype\bin\Scripts\python.exe
+#!D:\GitHub\FacialAttendenceSystem\bin\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'setuptools==40.8.0','console_scripts','easy_install'
 __requires__ = 'setuptools==40.8.0'
 import re

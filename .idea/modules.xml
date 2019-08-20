@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/FacialAttendenceSystemPrototype.iml" filepath="$PROJECT_DIR$/.idea/FacialAttendenceSystemPrototype.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/FacialAttendenceSystem.iml" filepath="$PROJECT_DIR$/.idea/FacialAttendenceSystem.iml" />
     </modules>
   </component>
 </project>

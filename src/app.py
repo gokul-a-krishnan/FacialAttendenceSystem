@@ -1,6 +1,7 @@
 import tkinter as tk
-from glib import reco as gk
 import webbrowser
+
+from FaceRecognizer import FaceRecognitionAPI as Fr, api_path
 
 
 def start_scan(name, input_window):
@@ -8,11 +9,10 @@ def start_scan(name, input_window):
     if name:
         if name.isalpha():
             input_window.destroy()
-            gk.gscan(name, 10)
+            Fr.scan(name, 10)
 
 
-def scan():
-    print('Scanning...')
+def scan_click():
     root = tk.Tk()
     root.title('Add Student')
     root.resizable(0, 0)
@@ -25,15 +25,19 @@ def scan():
 
 
 def record():
-    gk.gdetect()
+    Fr.detect()
 
 
 def report():
-    print(webbrowser.open('http://localhost/', new=0, autoraise=True))
+    webbrowser.open(api_path.url, new=0, autoraise=True)
+
+
+def record_time():
+    Fr.out_time()
 
 
 def update():
-    gk.gtrain()
+    Fr.train()
 
 
 def main():
@@ -46,14 +50,16 @@ def main():
     back = tk.Frame(master=mw, bg='grey')
     back.pack_propagate(0)
     back.pack(fill=tk.BOTH, expand=1)
-    bn_scan = tk.Button(master=back, text='Add Student', command=scan)
-    bn_train = tk.Button(master=back, text='Start', command=record)
+    bn_scan = tk.Button(master=back, text='Add Student', command=scan_click)
+    bn_train = tk.Button(master=back, text='Class In', command=record)
     bn_rec = tk.Button(master=back, text='Report', command=report)
-    close = tk.Button(master=back, text='Update', command=update)
+    bn_out = tk.Button(master=back, text='Class Out', command=record_time)
+    bn_update = tk.Button(master=back, text='Update', command=update)
     bn_scan.place(x=50, y=150, width=120, height=45)
     bn_train.place(x=200, y=150, width=120, height=45)
     bn_rec.place(x=350, y=150, width=120, height=45)
-    close.place(x=200, y=350, width=120, height=45)
+    bn_out.place(x=200, y=250, width=120, height=45)
+    bn_update.place(x=200, y=350, width=120, height=45)
     mw.mainloop()
 
 

@@ -9,7 +9,7 @@
         margin: 10%;
         font-family: arial, sans-serif;
         border-collapse: collapse;
-        width: 60%;
+        width: 80%;
       }
       
       td, th {
@@ -21,29 +21,43 @@
       tr:nth-child(even) {
         background-color: #dddddd;
       }
+
+
+
     </style>
 </head>
 <body>
-    <center>
+<center>
     <table>
         <tr>
-          <th style="width: 10%">S.No</th>
-          <th>Name</th>
-          <th>
-            <script>
+            <th style="width: 10%">S.No</th>
+            <th>Name</th>
+            <th>
+                <script>
               var today = new Date();
               var dd = String(today.getDate()).padStart(2, '0');
               var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
               var yyyy = today.getFullYear();
               today = dd + '/' + mm + '/' + yyyy;
               document.write(today);
-            </script>
-          </th>
+
+
+
+                </script>
+            </th>
+            <th style="width: 20%">IN</th>
+            <th style="width: 20%">OUT</th>
         </tr>
-        <tr id='dload'><td></td><td></td><td></td></tr>
-      </table>
-    </center>
-  <script>
+        <tr id='dload'>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</center>
+<script>
 
     let name_json;
     let report_json;
@@ -66,13 +80,29 @@
           .then(function(json) {
             update_report(json);
           });
-          
+
+         fetch('in-time.json')
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(json) {
+            update_in_time(json);
+          });
+
+         fetch('out-time.json')
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(json) {
+            update_out_time(json);
+          });
+
       }
 
     });
 
     function update_name(data){
-      const dload = "<tr id='dload'><td></td><td></td><td id='rload'></td></tr>";
+      const dload = "<tr id='dload'><td></td><td></td><td></td><td></td><td></td></tr>";
       const dload1 = "<tr><td>";
       const dload2 = "</td><td>";
       const dload3 = "</td><td id = '";
@@ -86,14 +116,42 @@
     }
 
     function update_report(data){
-      const rload1 = 
+      let rload1 = '<td>';
+      let rload2 = '</td>';
+      let iload1 = '<td id="';
+      let iload2 = '"></td>';
       report_json = JSON.parse(data);
       for(i in report_json){
-        document.getElementById(i).innerHTML = report_json[i];
+        document.getElementById(i).outerHTML = rload1 + report_json[i] + rload2 + iload1 + i + iload2;
+      }
+      
+    }
+
+    function update_in_time(data){
+      let iload1 = '<td>';
+      let iload2 = '</td>';
+      let oload1 = '<td id="';
+      let oload2 = '"></td>';
+      in_time_json = JSON.parse(data);
+      for(i in in_time_json){
+        document.getElementById(i).outerHTML = iload1 + in_time_json[i] + iload2 + oload1 + i + oload2;
+      }
+    }
+
+
+    function update_out_time(data){
+      let oload1 = '<td>';
+      let oload2 = '</td>';
+      let out_time_json = JSON.parse(data);
+      for(i in in_time_json){
+        document.getElementById(i).outerHTML = oload1 + out_time_json[i] + oload2;
       }
       document.getElementById('dload').outerHTML = '';
     }
-    
-  </script>
+
+
+
+
+</script>
 </body>
 </html>
