@@ -4,3 +4,5 @@ config/*.bin
 data/
 models/*.yml
 serve/*.json
+FaceRecognizer/__pycache__/api_path.cpython-36.pyc
+FaceRecognizer/__pycache__/FaceRecognitionAPI.cpython-36.pyc
