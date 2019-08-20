@@ -5,7 +5,7 @@
    * models
    ### or Specify the path in [Api Path](https://github.com/gokul-a-krishnan/FacialAttendenceSystem/blob/master/FaceRecognizer/api_path.py)
    
-   ###Install Python  
+   ### Install Python  
     Download latest Python from link below and add to path
    [Download Python](https://www.python.org/downloads/) 
    
