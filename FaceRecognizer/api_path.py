@@ -1,14 +1,14 @@
-image_path = '../data/'  # Change where you want to store Scanned Images
+image_path = '../data/'  # Set where you want to store Scanned Images
+__config_path = '../config/'  # Set where  data files to be stored
+__server_path = '../serve/'   # Set to Webserver Location
 
-classifier_path = '../classifiers/'  # Set Directory to Classifiers
 classifiers = {'face': "face.xml"}  # Add Classifiers
+classifier_path = '../classifiers/'  # Set Directory to Classifiers
 
-__config_path = '../config/'  # Change where  data files to be stored
-total_bin = __config_path + 'total.bin'  # test to store as Binary
+total_bin = __config_path + 'total.bin'
 names_bin = __config_path + 'names.bin'
 data_bin = __config_path + 'data.bin'
 
-__server_path = '../serve/'
 names_json = __server_path + 'names.json'
 out_time_json = __server_path + 'out-time.json'
 report_json = __server_path + 'report.json'
